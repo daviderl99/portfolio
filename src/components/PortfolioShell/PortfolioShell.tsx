@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import {
   FaArrowUpRightFromSquare,
   FaGithub,
@@ -155,6 +155,13 @@ export default function PortfolioShell() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const goHome = () => {
+    setActivePhoto(null);
+    setMode(null);
+    sessionStorage.removeItem("portfolio-mode");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
   if (!mode) {
     return <EntryGate onChoose={choose} />;
   }
@@ -165,7 +172,12 @@ export default function PortfolioShell() {
       <header className="siteHeader">
         <a
           href="#top"
+          onClick={(event) => {
+            event.preventDefault();
+            goHome();
+          }}
           className={mode === "photo" ? "font-serif italic" : "font-display"}
+          aria-label="Return to portfolio home"
         >
           David Frederik Erlich
         </a>
@@ -219,32 +231,154 @@ export default function PortfolioShell() {
 }
 
 function EntryGate({ onChoose }: { onChoose: (mode: Mode) => void }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [split, setSplit] = useState(50);
+  const [dragging, setDragging] = useState(false);
+  const [locked, setLocked] = useState<Mode | null>(null);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (locked) return;
+      if (event.key === "1" || event.key.toLowerCase() === "c") commit("dev");
+      if (event.key === "2" || event.key.toLowerCase() === "l") commit("photo");
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [locked]);
+
+  const setFromClientX = (clientX: number) => {
+    const element = wrapRef.current;
+    if (!element) return;
+    const bounds = element.getBoundingClientRect();
+    const next = ((clientX - bounds.left) / bounds.width) * 100;
+    setSplit(Math.min(78, Math.max(22, next)));
+  };
+
+  const commit = (next: Mode) => {
+    if (locked) return;
+    setLocked(next);
+    setSplit(next === "dev" ? 100 : 0);
+    window.setTimeout(() => onChoose(next), 620);
+  };
+
+  const onMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (locked) return;
+    if (event.pointerType === "touch" && !dragging) return;
+    setFromClientX(event.clientX);
+  };
+
   return (
-    <section className="entryGate">
-      <button className="entryCode" onClick={() => onChoose("dev")}>
-        <span>01 / Code</span>
-        <div>
-          <b>Developer</b>
-          <strong>
-            Build
-            <span className="cursor-blink" />
-          </strong>
-          <p>Accessible, thoughtful interfaces for the browser.</p>
+    <>
+      <h1 className="sr-only">
+        David Frederik Erlich - developer and photographer
+      </h1>
+      <div className="entryMobile">
+        <button
+          type="button"
+          className="entryMobileCode"
+          onClick={() => commit("dev")}
+        >
+          <span>01 / Code</span>
+          <div>
+            <b>Developer</b>
+            <strong>
+              Build
+              <span className="cursor-blink" />
+            </strong>
+            <p>Systems, motion, and the browser as a material.</p>
+          </div>
+        </button>
+        <button
+          type="button"
+          className="entryMobileLens"
+          onClick={() => commit("photo")}
+        >
+          <img src="/photos/tram.jpg" alt="A yellow tram in Lisbon" />
+          <i />
+          <span>02 / Lens</span>
+          <div>
+            <b>Photographer</b>
+            <strong>Look</strong>
+            <p>Analog streets, empty rooms, the hour after rain.</p>
+          </div>
+        </button>
+      </div>
+      <div
+        ref={wrapRef}
+        className={`entrySlider ${locked ? "entrySliderLocked" : ""}`}
+        onPointerMove={onMove}
+        onPointerDown={(event) => {
+          if (event.pointerType !== "mouse") {
+            setDragging(true);
+            setFromClientX(event.clientX);
+          }
+        }}
+        onPointerUp={() => setDragging(false)}
+        onPointerLeave={() => setDragging(false)}
+      >
+        <div
+          className="entrySliderCode"
+          style={{ clipPath: `inset(0 ${100 - split}% 0 0)` }}
+          onClick={() => commit("dev")}
+        >
+          <div className="entrySliderContent entrySliderCodeContent">
+            <div className="entrySliderTop">
+              <span>01 / Code</span>
+              <span>Tallinn, Estonia</span>
+            </div>
+            <div>
+              <b>Developer</b>
+              <strong>
+                Build
+                <span className="cursor-blink" />
+              </strong>
+              <p>TypeScript, motion, and sites that feel like rooms.</p>
+            </div>
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                commit("dev");
+              }}
+            >
+              Enter studio
+            </button>
+          </div>
         </div>
-        <small>Enter studio</small>
-      </button>
-      <button className="entryLens" onClick={() => onChoose("photo")}>
-        <img src="/photos/tram.jpg" alt="A yellow tram in Lisbon" />
-        <i />
-        <span>02 / Lens</span>
-        <div>
-          <b>Photographer</b>
-          <strong>Look</strong>
-          <p>Streets after rain, quiet rooms, changing light.</p>
+        <div
+          className="entrySliderLens"
+          style={{ clipPath: `inset(0 0 0 ${split}%)` }}
+          onClick={() => commit("photo")}
+        >
+          <img src="/photos/tram.jpg" alt="A yellow tram in Lisbon" />
+          <i />
+          <div className="entrySliderContent entrySliderLensContent">
+            <div className="entrySliderTop">
+              <span>02 / Lens</span>
+              <span>35mm / 2023-25</span>
+            </div>
+            <div>
+              <b>Photographer</b>
+              <strong>Look</strong>
+              <p>Streets after rain, empty architecture, quiet rooms.</p>
+            </div>
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                commit("photo");
+              }}
+            >
+              Enter field
+            </button>
+          </div>
         </div>
-        <small>Enter field</small>
-      </button>
-    </section>
+        <div className="entrySliderHandle" style={{ left: `${split}%` }}>
+          <div className="entrySliderLine" />
+          <div className="entrySliderKnob">↔</div>
+        </div>
+      </div>
+    </>
   );
 }
 
