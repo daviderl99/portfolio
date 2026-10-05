@@ -67,6 +67,23 @@
   color: var(--paper);
 }
 
+.siteHeader.photoHeader {
+  --primary: var(--ink);
+  --secondary: #3a312a;
+  --border: color-mix(in oklab, var(--ink) 28%, transparent);
+  background: #f3eee6;
+  color: var(--ink);
+  transition: background-color 250ms ease;
+}
+
+html[data-scrolled="true"] .siteHeader.photoHeader {
+  background: color-mix(in oklab, #f3eee6 78%, transparent);
+}
+
+.siteHeader.photoHeader nav a:hover {
+  color: var(--clay);
+}
+
 @media (max-width: 700px) {
   .siteHeader {
     padding: 0 1rem;
