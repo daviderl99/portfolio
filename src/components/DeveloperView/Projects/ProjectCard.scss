@@ -67,8 +67,13 @@
   font-size: 0.65rem;
 }
 
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
 .projectBody a {
   display: inline-flex;
-  margin-top: 1.25rem;
   color: var(--accent);
 }

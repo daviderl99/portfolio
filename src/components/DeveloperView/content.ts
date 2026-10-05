@@ -4,7 +4,8 @@ export type Project = {
   tag: string;
   summary: string;
   stack: string[];
-  href: string;
+  demo: string;
+  github?: string;
 };
 
 export const projects: Project[] = [
@@ -15,7 +16,8 @@ export const projects: Project[] = [
     summary:
       "An end-to-end video subtitle pipeline for transcription, translation, SRT export, and burned-in captions.",
     stack: ["Angular", "TypeScript", "Python", "FastAPI"],
-    href: "https://video-subtitler-fe.vercel.app",
+    demo: "https://video-subtitler-fe.vercel.app",
+    github: "https://github.com/daviderl99/video-sub-api",
   },
   {
     id: "02",
@@ -24,7 +26,8 @@ export const projects: Project[] = [
     summary:
       "A Google Drive-inspired storage interface with nested folders, uploads, and secure Firebase authentication.",
     stack: ["React", "Firebase", "SCSS"],
-    href: "https://daviderl99.github.io/Storage-Drive/#/login",
+    demo: "https://daviderl99.github.io/Storage-Drive/#/login",
+    github: "https://github.com/daviderl99/Storage-Drive",
   },
   {
     id: "03",
@@ -33,7 +36,8 @@ export const projects: Project[] = [
     summary:
       "A room-based chat application with authentication, Firestore messaging, image uploads, and profiles.",
     stack: ["React", "Vite", "Firebase"],
-    href: "https://daviderl99.github.io/chatter-firebase",
+    demo: "https://daviderl99.github.io/chatter-firebase",
+    github: "https://github.com/daviderl99/chatter-firebase",
   },
   {
     id: "04",
@@ -42,7 +46,8 @@ export const projects: Project[] = [
     summary:
       "A focused task manager with drag and drop, real-time updates, and a minimalist responsive interface.",
     stack: ["Svelte", "TypeScript", "Tailwind CSS"],
-    href: "https://another-to-do-list-two.vercel.app",
+    demo: "https://another-to-do-list-two.vercel.app",
+    github: "https://github.com/daviderl99/AnotherToDoList",
   },
 ];
 
