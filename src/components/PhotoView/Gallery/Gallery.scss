@@ -1,0 +1,145 @@
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.galleryItem {
+  position: relative;
+  container-type: inline-size;
+  min-height: 16rem;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease-out);
+}
+
+.galleryItem:hover img {
+  transform: scale(1.06);
+}
+
+.galleryItem .galleryOverlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1rem;
+  opacity: 0;
+  background: linear-gradient(to top, rgb(12 10 8 / 0.72), transparent);
+  color: var(--paper);
+  transform: translateY(0.5rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.galleryItem .galleryTitle {
+  min-width: 0;
+  text-align: left;
+}
+
+.galleryItem .galleryExif {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  width: 50%;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 1.4;
+  text-align: right;
+  text-transform: none;
+  white-space: normal;
+}
+
+.galleryItem:hover .galleryOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide the overlay when the actual card width cannot fit both columns. */
+@container (max-width: 14rem) {
+  .galleryItem .galleryOverlay {
+    display: none;
+  }
+}
+
+.galleryItem em {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+}
+
+.galleryItem small {
+  align-self: end;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+.gallery-0 {
+  grid-column: span 7;
+  height: 32rem;
+}
+
+.gallery-1 {
+  grid-column: span 5;
+  height: 32rem;
+}
+
+.gallery-2 {
+  grid-column: span 12;
+  height: 24rem;
+}
+
+.gallery-3 {
+  grid-column: span 4;
+  height: 22rem;
+}
+
+.gallery-4 {
+  grid-column: span 8;
+  height: 22rem;
+}
+
+.gallery-5,
+.gallery-6,
+.gallery-7 {
+  grid-column: span 4;
+  height: 28rem;
+}
+
+.gallery-8,
+.gallery-9 {
+  grid-column: span 6;
+  height: 20rem;
+}
+
+@media (max-width: 700px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galleryItem {
+    grid-column: span 1 !important;
+    height: 14rem !important;
+  }
+
+  .gallery-0,
+  .gallery-2 {
+    grid-column: span 2 !important;
+  }
+}

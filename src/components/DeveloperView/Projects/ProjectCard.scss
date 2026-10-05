@@ -1,0 +1,74 @@
+.mockWindow {
+  height: 100%;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.mockWindow:hover {
+  border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  transform: translateY(-3px);
+}
+
+.mockChrome {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mockChrome i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.mockChrome span {
+  margin-left: auto;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.projectBody {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.projectIndex {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.projectBody h3 {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+}
+
+.projectBody p {
+  margin-top: 0.7rem;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.projectBody small {
+  display: block;
+  margin-top: 1rem;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.projectBody a {
+  display: inline-flex;
+  margin-top: 1.25rem;
+  color: var(--accent);
+}

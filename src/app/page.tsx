@@ -1,8 +1,10 @@
-import PortfolioShell from "@/components/PortfolioShell/PortfolioShell";
+import Portfolio from "@/components/Portfolio/Portfolio";
+import { getPhotoMetadata } from "@/lib/photo-metadata";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-export default function Home() {
+export default async function Home() {
+  const photos = await getPhotoMetadata();
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -21,7 +23,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <PortfolioShell />
+      <Portfolio photos={photos} />
     </>
   );
 }

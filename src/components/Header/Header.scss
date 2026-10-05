@@ -1,0 +1,78 @@
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklab, var(--background) 84%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.siteHeader > a {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.siteHeader nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.siteHeader nav a {
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.siteHeader nav a:hover {
+  color: var(--primary);
+}
+
+.modeToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.modeToggle button {
+  min-width: 3.8rem;
+  height: 2rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.modeToggle button.selected {
+  background: var(--accent);
+  color: #06241c;
+}
+
+.modeToggle button.photoSelected {
+  background: var(--clay);
+  color: var(--paper);
+}
+
+@media (max-width: 700px) {
+  .siteHeader {
+    padding: 0 1rem;
+  }
+
+  .siteHeader nav {
+    display: none;
+  }
+}

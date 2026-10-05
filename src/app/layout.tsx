@@ -7,6 +7,9 @@ import {
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.scss";
+import "@/styles/typography.scss";
+import "@/styles/layout.scss";
+import "@/styles/motion.scss";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-body" });
 const syne = Syne({ subsets: ["latin"], variable: "--font-display" });
