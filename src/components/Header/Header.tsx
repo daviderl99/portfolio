@@ -45,7 +45,12 @@ export default function Header({
           </a>
         ))}
       </nav>
-      <div className="modeToggle" role="group" aria-label="Portfolio mode">
+      <div
+        className="modeToggle"
+        data-mode={mode}
+        role="group"
+        aria-label="Portfolio mode"
+      >
         <button
           className={mode === "dev" ? "selected" : ""}
           onClick={() => onChoose("dev")}
