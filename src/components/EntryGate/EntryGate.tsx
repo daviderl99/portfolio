@@ -72,7 +72,7 @@ export default function EntryGate({
               Build
               <span className="cursor-blink" />
             </strong>
-            <p>Systems, motion, and the browser as a material.</p>
+            <p>Code, design, and things for the web.</p>
           </div>
         </button>
         <button
@@ -92,7 +92,7 @@ export default function EntryGate({
           <div>
             <b>Photographer</b>
             <strong>Look</strong>
-            <p>Analog streets, empty rooms, the hour after rain.</p>
+            <p>Streets, nature, and everyday moments.</p>
           </div>
         </button>
       </div>
@@ -117,7 +117,6 @@ export default function EntryGate({
           <div className="entrySliderContent entrySliderCodeContent">
             <div className="entrySliderTop">
               <span>01 / Code</span>
-              <span>Tallinn, Estonia</span>
             </div>
             <div>
               <b>Developer</b>
@@ -125,7 +124,7 @@ export default function EntryGate({
                 Build
                 <span className="cursor-blink" />
               </strong>
-              <p>TypeScript, motion, and sites that feel like rooms.</p>
+              <p>Code, design, and things for the web.</p>
             </div>
             <button
               type="button"
@@ -153,13 +152,13 @@ export default function EntryGate({
           <i />
           <div className="entrySliderContent entrySliderLensContent">
             <div className="entrySliderTop">
+              <span></span>
               <span>02 / Lens</span>
-              <span>35mm / 2023-25</span>
             </div>
             <div>
               <b>Photographer</b>
               <strong>Look</strong>
-              <p>Streets after rain, empty architecture, quiet rooms.</p>
+              <p>Streets, nature, and everyday moments.</p>
             </div>
             <button
               type="button"
