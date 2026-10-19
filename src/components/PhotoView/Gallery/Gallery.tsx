@@ -20,7 +20,6 @@ export default function Gallery({
 }) {
   return (
     <section id="gallery" className="wideSection">
-      <p className="kicker">Selected prints</p>
       <h2 className="text-section font-serif italic">Gallery</h2>
       <div className="galleryGrid">
         {photos.map((photo, index) => (

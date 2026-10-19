@@ -16,10 +16,7 @@ export default function PhotoHero({
       <div>
         <p className="kicker">{photo.title}</p>
         <h1 className="text-hero font-serif italic">David Frederik Erlich</h1>
-        <p>
-          Photographs of streets after rain, empty architecture, and quiet
-          interiors.
-        </p>
+        <p>Photos of landscapes, cities, and whatever catches my eye.</p>
       </div>
     </button>
   );

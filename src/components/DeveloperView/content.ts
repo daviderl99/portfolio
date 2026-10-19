@@ -4,7 +4,7 @@ export type Project = {
   tag: string;
   summary: string;
   stack: string[];
-  demo: string;
+  demo: string | null;
   github?: string;
 };
 
@@ -41,25 +41,60 @@ export const projects: Project[] = [
   },
   {
     id: "04",
-    name: "Another ToDo List",
-    tag: "Interface",
+    name: "Employee Manager",
+    tag: "Product",
     summary:
-      "A focused task manager with drag and drop, real-time updates, and a minimalist responsive interface.",
+      "A product management tool for tracking employee information and performance.",
     stack: ["Svelte", "TypeScript", "Tailwind CSS"],
-    demo: "https://another-to-do-list-two.vercel.app",
-    github: "https://github.com/daviderl99/AnotherToDoList",
+    demo: null,
+    github: "https://github.com/daviderl99/EmployeeManager",
   },
 ];
 
-export const stackItems = [
-  "React",
-  "Angular",
-  "TypeScript",
-  "Next.js",
-  "Svelte",
-  "Python",
-  "Firebase",
-  "SCSS",
-  "Tailwind",
-  "Git",
+export type StackItem = {
+  name: string;
+  description: string;
+};
+
+export const stackItems: StackItem[] = [
+  {
+    name: "React",
+    description: "Component-driven UIs with hooks and reusable state logic.",
+  },
+  {
+    name: "Angular",
+    description: "Structured, scalable front ends with RxJS and strong typing.",
+  },
+  {
+    name: "TypeScript",
+    description: "Type-safe code that stays maintainable as projects grow.",
+  },
+  {
+    name: "Next.js",
+    description: "Server-rendered and static React apps with fast page loads.",
+  },
+  {
+    name: "Svelte",
+    description: "Lightweight, reactive interfaces with minimal boilerplate.",
+  },
+  {
+    name: "Python",
+    description: "Backend services, automation, and data processing pipelines.",
+  },
+  {
+    name: "Firebase",
+    description: "Authentication, Firestore, and storage for realtime apps.",
+  },
+  {
+    name: "Spring Boot",
+    description: "Production-ready Java backends with clean layered design.",
+  },
+  {
+    name: "REST API",
+    description: "Well-structured, documented endpoints connecting clients and services.",
+  },
+  {
+    name: "Docker",
+    description: "Containerized builds for consistent local and deployed environments.",
+  },
 ];

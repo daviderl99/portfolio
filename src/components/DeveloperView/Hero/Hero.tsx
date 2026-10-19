@@ -3,11 +3,9 @@ import "./Hero.scss";
 export default function Hero() {
   return (
     <section className="devHero">
-      <p className="kicker">Studio / 2016 - now</p>
+      <p className="kicker">Web Dev / 2022 - now</p>
       <h1 className="text-display">
-        David
-        <br />
-        Frederik
+        David Frederik
         <br />
         Erlich
         <span className="cursor-blink" />

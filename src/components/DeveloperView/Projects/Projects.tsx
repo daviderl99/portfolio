@@ -10,7 +10,7 @@ export default function Projects() {
           <p className="kicker">Selected work</p>
           <h2 className="text-section">Projects</h2>
         </div>
-        <p className="monoMeta">2023 - 2025</p>
+        {/* <p className="monoMeta">2023 - 2026</p> */}
       </div>
       <ul className="projectGrid">
         {projects.map((project) => (

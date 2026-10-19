@@ -1,13 +1,15 @@
+import "./Intro.scss";
+
 export default function Intro() {
   return (
-    <section id="intro" className="wideSection twoColumn">
+    <section id="intro" className="wideSection">
       <p className="kicker">Brief</p>
-      <div>
+      <div className="introCopy">
         <p className="largeCopy">
-          I&apos;m a frontend developer based in Tallinn who enjoys building
-          clean, intuitive, and accessible web experiences. I work at the
-          intersection of design and development, turning complex requirements
-          into practical interfaces.
+          I&apos;m a web developer based in Tallinn who enjoys building clean,
+          intuitive, and accessible web experiences. I like working where design
+          meets code, and I enjoy taking complicated requirements and turning
+          them into interfaces that are simple to use.
         </p>
         <p className="monoMeta">
           daviderlich75@gmail.com <span>/</span> Tallinn, Estonia

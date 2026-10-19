@@ -8,9 +8,9 @@ export default function Stack() {
       <h2 className="text-section">Technical range</h2>
       <ul className="stackGrid">
         {stackItems.map((item) => (
-          <li key={item}>
-            <strong>{item}</strong>
-            <span>Used to make interfaces clear, quick, and resilient.</span>
+          <li key={item.name}>
+            <strong>{item.name}</strong>
+            <span>{item.description}</span>
           </li>
         ))}
       </ul>

@@ -20,14 +20,16 @@ export default function ProjectCard({ project }: { project: Project }) {
           <p>{project.summary}</p>
           <small>{project.stack.join("  ·  ")}</small>
           <div className="projectLinks">
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open ${project.name}`}
-            >
-              <FaArrowUpRightFromSquare />
-            </a>
+            {project.demo ? (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${project.name}`}
+              >
+                <FaArrowUpRightFromSquare />
+              </a>
+            ) : null}
             {project.github ? (
               <a
                 href={project.github}

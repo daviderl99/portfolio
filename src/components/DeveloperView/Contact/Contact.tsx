@@ -8,7 +8,7 @@ import "./Contact.scss";
 export default function Contact() {
   return (
     <section id="contact" className="wideSection contactSection">
-      <p className="kicker">Available for thoughtful work</p>
+      <p className="kicker">Available for work</p>
       <h2 className="text-hero">
         Let&apos;s make
         <br />
