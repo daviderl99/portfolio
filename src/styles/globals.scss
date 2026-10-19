@@ -3,11 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --primary: #ffffff;
-  --secondary: #e4e4e4;
-  --background: #0a0a0a;
-  --accent: #64ffda;
-  --border: #3a3a3a;
+  --primary: #e7ece6;
+  --secondary: #8b9388;
+  --background: #0b0c10;
+  --accent: #2ee6b0;
+  --border: color-mix(in oklab, var(--primary) 14%, transparent);
+  --surface: #14161c;
+  --grid: color-mix(in oklab, var(--primary) 7%, transparent);
+  --paper: #f3eee6;
+  --ink: #1c1612;
+  --clay: #c45c26;
+  --font-body: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * {
@@ -18,153 +28,20 @@
 
 html {
   scroll-behavior: smooth;
-  height: 100%;
+  background: var(--background);
+  color: var(--primary);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   background-color: var(--background);
   color: var(--primary);
   line-height: 1.6;
-  height: 100%;
-  overflow: hidden;
-}
-
-.pageRoot {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.contentLayer {
-  position: relative;
-  z-index: 1;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.pageViewport {
-  position: relative;
-  flex: 1;
-  height: 0;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.pageStage {
-  position: relative;
-  height: 100%;
-}
-
-.pagePanel {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-.pagePanelCurrent {
-  transform: translateX(0);
-}
-
-.pagePanelIncomingForward {
-  transform: translateX(100%);
-}
-
-.pagePanelIncomingReverse {
-  transform: translateX(-100%);
-}
-
-.pagePanelExit,
-.pagePanelEnter {
-  overflow: hidden;
-  transition:
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.65s ease;
-}
-
-.pagePanelCurrentForward.pagePanelExit {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-.pagePanelCurrentReverse.pagePanelExit {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-.pagePanelEnter {
-  transform: translateX(0);
-}
-
-.heroPanel {
-  min-height: 100%;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Sections */
-section[id="about"],
-section[id="projects"],
-section[id="skills"],
-section[id="contact"] {
-  scroll-margin-top: 80px;
-}
-
-.section-padding {
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .section-padding,
-  .heroPanel {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero h2 {
-    font-size: 1.5rem;
-  }
-
-  .tagline {
-    font-size: 1rem;
-  }
-
-  section {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero > * {
-  animation: fadeIn 0.8s ease-out forwards;
+  min-height: 100dvh;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center top;
 }

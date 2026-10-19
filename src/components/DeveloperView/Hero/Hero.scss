@@ -1,0 +1,57 @@
+.devHero {
+  width: min(100% - 3rem, 72rem);
+  margin: 0 auto;
+  padding: 7rem 0 8rem;
+}
+
+.devHero h1 {
+  margin-top: 1.25rem;
+}
+
+.heroLead {
+  max-width: 34rem;
+  margin-top: 2rem;
+  color: var(--secondary);
+  font-size: 1.2rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.solidButton,
+.outlineButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.solidButton {
+  background: var(--accent);
+  color: #06241c;
+}
+
+.outlineButton {
+  border: 1px solid var(--border);
+  color: var(--primary);
+}
+
+.outlineButton:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .devHero {
+    width: min(100% - 2rem, 72rem);
+    padding: 5rem 0 4rem;
+  }
+}

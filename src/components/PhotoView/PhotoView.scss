@@ -1,0 +1,10 @@
+.photoView {
+  --background: #f3eee6;
+  --primary: #1c1612;
+  --secondary: #6e6258;
+  --border: color-mix(in oklab, var(--primary) 14%, transparent);
+  --surface: #eae3d8;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at 20% 0%, #f7f2ea, #efe8dc 55%, #eadfce);
+  color: var(--primary);
+}

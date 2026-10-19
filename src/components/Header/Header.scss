@@ -1,0 +1,139 @@
+.siteHeader {
+  --header-bg: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  /* Matches the page content column (72rem) so header edges line up with the sections below. */
+  padding: 0 max(1.5rem, calc((100% - 72rem) / 2));
+  border-bottom: 1px solid var(--border);
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  transition: background-color 250ms ease;
+}
+
+html[data-scrolled="true"] .siteHeader {
+  background: color-mix(in oklab, var(--header-bg) 78%, transparent);
+}
+
+.siteHeader > a {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.siteHeader nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.siteHeader nav a {
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.siteHeader nav a:hover {
+  color: var(--primary);
+}
+
+.modeToggle {
+  --toggle-pad: 0.3rem;
+  --toggle-gap: 0.2rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--toggle-gap);
+  padding: var(--toggle-pad);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* The pill slides under the active button */
+.modeToggle::before {
+  position: absolute;
+  top: var(--toggle-pad);
+  bottom: var(--toggle-pad);
+  left: var(--toggle-pad);
+  width: calc((100% - 2 * var(--toggle-pad) - var(--toggle-gap)) / 2);
+  border-radius: 999px;
+  background: var(--accent);
+  content: "";
+  transition:
+    transform 380ms var(--ease-out),
+    background-color 380ms ease;
+}
+
+.modeToggle[data-mode="photo"]::before {
+  background: var(--clay);
+  transform: translateX(calc(100% + var(--toggle-gap)));
+}
+
+.modeToggle button {
+  position: relative;
+  min-width: 4.4rem;
+  height: 2.2rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 380ms ease;
+}
+
+.modeToggle button.selected {
+  color: #06241c;
+}
+
+.modeToggle button.photoSelected {
+  color: var(--paper);
+}
+
+.siteHeader.photoHeader {
+  --primary: var(--ink);
+  --secondary: #3a312a;
+  --border: color-mix(in oklab, var(--ink) 28%, transparent);
+  --header-bg: #f3eee6;
+  color: var(--ink);
+}
+
+.siteHeader.photoHeader > a {
+  font-size: 20px;
+}
+
+.siteHeader.photoHeader nav a {
+  font-family: var(--font-serif);
+}
+
+.siteHeader.photoHeader nav a:hover {
+  color: var(--clay);
+}
+
+.siteHeader.photoHeader .modeToggle button {
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modeToggle::before,
+  .modeToggle button {
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .siteHeader {
+    padding: 0 1rem;
+  }
+
+  .siteHeader nav {
+    display: none;
+  }
+}

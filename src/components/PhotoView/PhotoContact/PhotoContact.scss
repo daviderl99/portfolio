@@ -1,0 +1,15 @@
+.photoContact {
+  padding-top: 1rem;
+  padding-bottom: 8rem;
+}
+
+.photoContact h2 {
+  margin-top: 1rem;
+}
+
+@media (max-width: 700px) {
+  .photoContact {
+    padding-top: 0.5rem;
+    padding-bottom: 3.5rem;
+  }
+}

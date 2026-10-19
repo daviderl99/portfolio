@@ -1,0 +1,42 @@
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  margin-top: 2.5rem;
+  background: var(--border);
+  list-style: none;
+}
+
+.stackGrid li {
+  min-height: 8rem;
+  padding: 1.25rem;
+  background: var(--background);
+}
+
+.stackGrid li:hover {
+  background: var(--surface);
+}
+
+.stackGrid strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.stackGrid span {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--secondary);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .stackGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stackGrid li {
+    min-height: 7rem;
+    padding: 1rem;
+  }
+}

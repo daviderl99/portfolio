@@ -1,9 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  IBM_Plex_Mono,
+  Outfit,
+  Syne,
+} from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.scss";
+import "@/styles/typography.scss";
+import "@/styles/layout.scss";
+import "@/styles/motion.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-body" });
+const syne = Syne({ subsets: ["latin"], variable: "--font-display" });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  style: ["normal", "italic"],
+});
+const plex = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
@@ -74,7 +93,9 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
       </head>
-      <body className={inter.className}>
+      <body
+        className={`${outfit.variable} ${syne.variable} ${cormorant.variable} ${plex.variable}`}
+      >
         {children}
         <Analytics />
       </body>
